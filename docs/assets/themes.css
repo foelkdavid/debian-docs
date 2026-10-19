@@ -1,0 +1,100 @@
+/* Visual presets share the same content and responsive layout. */
+.theme-picker {
+  flex: 0 0 auto;
+  max-width: 6rem;
+  min-height: 1.8rem;
+  margin: 0 .4rem;
+  padding: .25rem .4rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: .4rem;
+  background: var(--md-default-bg-color);
+  color: var(--md-default-fg-color);
+  font: inherit;
+  font-size: .65rem;
+  cursor: pointer;
+}
+
+.theme-picker:focus-visible {
+  outline: 2px solid var(--md-accent-fg-color);
+  outline-offset: 2px;
+}
+
+/* Nord: soft blue surfaces, rounded cards, and a cool accent. */
+[data-docs-theme="nord"] [data-md-color-scheme="default"] {
+  --md-primary-fg-color: #245c92;
+  --md-primary-fg-color--light: #4b7fad;
+  --md-primary-fg-color--dark: #173e65;
+  --md-accent-fg-color: #086e85;
+  --md-default-bg-color: #f3f7fb;
+  --md-default-bg-color--light: #e9f0f7;
+}
+
+[data-docs-theme="nord"] [data-md-color-scheme="slate"] {
+  --md-hue: 215;
+  --md-primary-fg-color: #8ec5f4;
+  --md-primary-bg-color: #101c2a;
+  --md-accent-fg-color: #7bd9e3;
+  --md-default-bg-color: #101c2a;
+  --md-default-bg-color--light: #17283b;
+}
+
+[data-docs-theme="nord"] :is(.feature-card, .wiki-card, .shortcut-card, .issue-card) {
+  border-radius: 1.2rem;
+  border-color: color-mix(in srgb, var(--md-primary-fg-color) 20%, transparent);
+  background: linear-gradient(135deg,
+    color-mix(in srgb, var(--md-primary-fg-color) 8%, var(--md-default-bg-color)),
+    var(--md-default-bg-color));
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--md-primary-fg-color) 7%, transparent);
+}
+
+[data-docs-theme="nord"] .md-typeset .md-button {
+  border-radius: .7rem;
+}
+
+/* Graphite: neutral surfaces, precise edges, and minimal decoration. */
+[data-docs-theme="graphite"] [data-md-color-scheme="default"] {
+  --md-primary-fg-color: #3d4857;
+  --md-primary-fg-color--light: #657285;
+  --md-primary-fg-color--dark: #202a37;
+  --md-accent-fg-color: #415fba;
+  --md-default-bg-color: #fafaf9;
+  --md-default-bg-color--light: #f0f0ed;
+}
+
+[data-docs-theme="graphite"] [data-md-color-scheme="slate"] {
+  --md-hue: 220;
+  --md-primary-fg-color: #c6cedb;
+  --md-primary-bg-color: #17181b;
+  --md-accent-fg-color: #a6b9ff;
+  --md-default-bg-color: #17181b;
+  --md-default-bg-color--light: #222429;
+}
+
+[data-docs-theme="graphite"] :is(.feature-card, .wiki-card, .shortcut-card, .issue-card) {
+  border-radius: .3rem;
+  background: var(--md-default-bg-color);
+  border-color: var(--md-default-fg-color--lightest);
+  box-shadow: none;
+}
+
+[data-docs-theme="graphite"] .md-typeset .md-button {
+  border-radius: .2rem;
+}
+
+[data-docs-theme="graphite"] .md-header {
+  backdrop-filter: none;
+  background: var(--md-default-bg-color);
+}
+
+[data-docs-theme="graphite"] .md-content h1 {
+  font-weight: 650;
+  letter-spacing: -.025em;
+}
+
+@media screen and (max-width: 600px) {
+  .theme-picker {
+    max-width: 4.4rem;
+    margin-inline: .15rem;
+    font-size: .6rem;
+  }
+}
