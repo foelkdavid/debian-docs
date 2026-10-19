@@ -7,7 +7,7 @@ hide:
 
 !!! tip "Work in Progress!"
     I will try to slowly integrate more and more documentation.
-    If you have any issues or think a piece of documentation is missing in here, please create an [Issue](https://www.github.com/foelkdavid/debiandocs)
+    If you have any issues or think a piece of documentation is missing in here, please create an [Issue](https://github.com/foelkdavid/debian-docs/issues/new?labels=Wiki)
 
 <div class="wiki-grid">
 

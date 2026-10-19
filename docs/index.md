@@ -48,4 +48,4 @@ Reproducable on all your systems.
 </div>
 
 !!! tip "Work in Progress!"
-    If you have any issues or think a piece of documentation is missing in here, please create an [Issue](https://www.github.com/foelkdavid/debiandocs)
+    If you have any issues or think a piece of documentation is missing in here, please create an [Issue](https://github.com/foelkdavid/debian-docs/issues/new?labels=Wiki)
