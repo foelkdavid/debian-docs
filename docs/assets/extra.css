@@ -132,25 +132,27 @@
 }
 
 .home-links > p {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: .5rem;
 }
 
 .hero-copy .home-links .md-button {
-  flex: 0 0 auto;
+  min-width: 0;
   margin: 1rem 0 0;
-  white-space: nowrap;
+  padding: .625em 1em;
+  font-size: .8rem;
+  text-align: center;
+  overflow-wrap: anywhere;
 }
 
 @media screen and (max-width: 600px) {
   .home-links > p {
-    flex-direction: column;
+    grid-template-columns: 1fr;
   }
 
   .hero-copy .home-links .md-button {
     margin: 0;
-    text-align: center;
   }
 }
 
