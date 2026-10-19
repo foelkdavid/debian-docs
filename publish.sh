@@ -5,21 +5,28 @@ namespace="debian-docs"
 deployment="debian-docs"
 
 printf 'Restarting %s/%s...\n' "$namespace" "$deployment"
-kubectl -n "$namespace" rollout restart "deployment/$deployment"
+kubectl -n "$namespace" delete pod \
+  -l "app.kubernetes.io/name=$deployment" \
+  --grace-period=0 \
+  --force \
+  --wait=true
 
-if ! kubectl -n "$namespace" rollout status "deployment/$deployment" --timeout=20s; then
-  printf 'Rollout is waiting; force-deleting old pods already in Terminating state...\n'
+printf 'Waiting for the replacement pod...\n'
+attempt=0
+pod=""
+while [ -z "$pod" ]; do
+  attempt=$((attempt + 1))
+  if [ "$attempt" -gt 60 ]; then
+    printf 'Timed out waiting for the replacement pod to be created.\n' >&2
+    exit 1
+  fi
 
-  kubectl -n "$namespace" get pods \
+  pod=$(kubectl -n "$namespace" get pods \
     -l "app.kubernetes.io/name=$deployment" \
-    -o jsonpath='{range .items[?(@.metadata.deletionTimestamp)]}{.metadata.name}{"\n"}{end}' |
-  while IFS= read -r pod; do
-    [ -n "$pod" ] || continue
-    printf 'Force-deleting pod %s...\n' "$pod"
-    kubectl -n "$namespace" delete pod "$pod" --grace-period=0 --force --wait=false
-  done
+    -o jsonpath='{.items[0].metadata.name}' 2>/dev/null || true)
+  [ -n "$pod" ] || sleep 1
+done
 
-  kubectl -n "$namespace" rollout status "deployment/$deployment" --timeout=5m
-fi
+kubectl -n "$namespace" wait --for=condition=Ready "pod/$pod" --timeout=5m
 
 printf 'Published successfully: https://docs.debian.foelk.com\n'
