@@ -1,32 +1,38 @@
 #!/bin/sh
 set -eu
 
-namespace="debian-docs"
-deployment="debian-docs"
+# Run from any directory; the builder always uses the mounted docs repository.
+kubectl -n debian-docs exec -i deployment/debian-docs -c builder -- python - <<'PYTHON'
+import fcntl
+import os
+from pathlib import Path
+import shutil
+import subprocess
+import tempfile
+import time
 
-printf 'Restarting %s/%s...\n' "$namespace" "$deployment"
-kubectl -n "$namespace" delete pod \
-  -l "app.kubernetes.io/name=$deployment" \
-  --grace-period=0 \
-  --force \
-  --wait=true
-
-printf 'Waiting for the replacement pod...\n'
-attempt=0
-pod=""
-while [ -z "$pod" ]; do
-  attempt=$((attempt + 1))
-  if [ "$attempt" -gt 60 ]; then
-    printf 'Timed out waiting for the replacement pod to be created.\n' >&2
-    exit 1
-  fi
-
-  pod=$(kubectl -n "$namespace" get pods \
-    -l "app.kubernetes.io/name=$deployment" \
-    -o jsonpath='{.items[0].metadata.name}' 2>/dev/null || true)
-  [ -n "$pod" ] || sleep 1
-done
-
-kubectl -n "$namespace" wait --for=condition=Ready "pod/$pod" --timeout=5m
-
-printf 'Published successfully: https://docs.debian.foelk.com\n'
+started = time.monotonic()
+site = Path('/site')
+with (site / '.publish.lock').open('w') as lock:
+    fcntl.flock(lock, fcntl.LOCK_EX)
+    target = Path(tempfile.mkdtemp(prefix='build-', dir=site))
+    try:
+        subprocess.run(['mkdocs', 'build', '--strict', '--site-dir', str(target)],
+                       cwd='/docs', check=True)
+        # Publish only successful builds. nginx sees the switch immediately.
+        target.chmod(0o755)
+        previous = (site / 'current').resolve()
+        pending = site / '.current-next'
+        pending.unlink(missing_ok=True)
+        pending.symlink_to(target.name)
+        os.replace(pending, site / 'current')
+    except BaseException:
+        shutil.rmtree(target)
+        raise
+    # Retain the previous build for requests already in progress.
+    for old in site.iterdir():
+        if old.is_dir() and not old.is_symlink() and old not in (target, previous):
+            if old.name.startswith('build-') or old.name == 'initial':
+                shutil.rmtree(old)
+print(f'Published in {time.monotonic() - started:.2f}s: https://docs.debian.foelk.com')
+PYTHON

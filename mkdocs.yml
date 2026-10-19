@@ -1,5 +1,5 @@
-site_name: Debian Setup
-site_description: A practical, reproducible Debian setup shared with friends.
+site_name: Debian Docs
+site_description: Debian for friends you forced linux upon.
 site_url: https://docs.debian.foelk.com
 
 theme:
@@ -40,15 +40,9 @@ theme:
 
 nav:
   - Home: index.md
-  - Get started:
-      - Overview: getting-started/index.md
-      - Install Debian: getting-started/install.md
-      - First boot: getting-started/first-boot.md
-  - How-to guides:
-      - Overview: how-to/index.md
-      - Add a new page: how-to/add-a-page.md
-  - Reference:
-      - Useful commands: reference/commands.md
+  - First Install: getting-started/index.md 
+  - Wiki: wiki/index.md
+  - Keyboard shortcuts: shortcuts/index.md
 
 markdown_extensions:
   - abbr
@@ -81,4 +75,4 @@ extra:
       link: https://www.debian.org/
       name: Debian
 
-copyright: Built for humans who want a calm, reproducible Debian system.
+copyright: Every bug was carefully handcrafted.

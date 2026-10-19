@@ -4,48 +4,48 @@ hide:
   - toc
 ---
 
-# A Debian setup worth sharing.
+# Debian for friends you forced linux upon.
 
 <div class="hero-copy" markdown>
 
-Practical notes for building a clean, dependable Debian system — from the first installer screen to the small details that make it feel like home.
+Notes for using a modern, dependable Debian system.
 
-[Start the setup](getting-started/index.md){ .md-button .md-button--primary }
-[Browse how-to guides](how-to/index.md){ .md-button }
+<div class="home-links" markdown>
 
+[First Install](getting-started/index.md){ .md-button .md-button--primary }
+[Wiki](wiki/index.md){ .md-button }
+[Keyboard Shortcuts](shortcuts/index.md){ .md-button }
+
+</div>
 </div>
 
 <div class="feature-grid" markdown>
 
 <div class="feature-card" markdown>
 
-### :material-check-decagram: Reproducible
+### Hyprland + Noctalia
 
-Commands and decisions are written down, so the same setup can be repeated without guesswork.
-
-</div>
-
-<div class="feature-card" markdown>
-
-### :material-lightning-bolt: Practical
-
-Short explanations, copyable commands, and sensible defaults. No twenty-page detours.
+For a modern experience on a stable distribution.
 
 </div>
 
 <div class="feature-card" markdown>
 
-### :material-account-group: Shareable
+### ZFS
 
-Built for friends who want the setup without needing a guided tour every time.
+A Robust Filesystem with features like Raid and Snapshotting.
+
+</div>
+
+<div class="feature-card" markdown>
+
+### Easy Setup
+
+Reproducable on all your systems.
 
 </div>
 
 </div>
 
-!!! tip "This is your documentation"
-    The current pages are a clean starting point. Replace the example text with your real setup, add screenshots to `docs/assets/`, and commit everything to Git.
-
-## Where to begin
-
-New machine? Follow [Get started](getting-started/index.md) in order. Looking for one specific change? Jump directly into the [how-to guides](how-to/index.md), or use search in the header.
+!!! tip "Work in Progress!"
+    If you have any issues or think a piece of documentation is missing in here, please create an [Issue](https://www.github.com/foelkdavid/debiandocs)

@@ -12,10 +12,10 @@ Open <http://localhost:8000>. Changes are rebuilt automatically while the previe
 
 ## Publish on the k3s host
 
-After pulling the latest commit into `/srv/k3s/volumes/debian-docs/repository`, rebuild the running site:
+Edit the Markdown files in `docs/` (and update navigation in `mkdocs.yml` when adding or moving pages), then run:
 
 ```sh
 ./publish.sh
 ```
 
-The deployment builds the static site with MkDocs Material and serves it with nginx. No content is stored in a database or Kubernetes ConfigMap.
+Publishing runs MkDocs in an already-running builder container and switches nginx to the finished site immediately. No commit or pod restart is required. Failed builds keep the last successful site online. Refresh your browser after publishing.
