@@ -4,6 +4,9 @@ hide:
   - toc
 ---
 
+!!! tip "Work in Progress!"
+    If you have any issues or think a piece of documentation is missing in here, please create an [Issue](https://github.com/foelkdavid/debian-docs/issues/new?labels=Wiki)
+
 # Debian for friends you forced linux upon.
 
 <div class="hero-copy" markdown>
@@ -67,6 +70,3 @@ Help shape these docs — see what's missing or join the discussion.
 
 [View all issues on GitHub](https://github.com/foelkdavid/debian-docs/issues){ .md-button }
 [Create an issue](https://github.com/foelkdavid/debian-docs/issues/new?labels=Wiki){ .md-button .md-button--primary }
-
-!!! tip "Work in Progress!"
-    If you have any issues or think a piece of documentation is missing in here, please create an [Issue](https://github.com/foelkdavid/debian-docs/issues/new?labels=Wiki)
