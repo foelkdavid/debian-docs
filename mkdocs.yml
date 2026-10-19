@@ -67,11 +67,9 @@ plugins:
 
 extra_css:
   - assets/extra.css
-  - assets/themes.css
 
 extra_javascript:
   - assets/github-issues.js
-  - assets/theme-picker.js
 
 extra:
   generator: false

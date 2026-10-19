@@ -4,9 +4,6 @@ hide:
   - toc
 ---
 
-!!! tip "Work in Progress!"
-    If you have any issues or think a piece of documentation is missing in here, please create an [Issue](https://github.com/foelkdavid/debian-docs/issues/new?labels=Wiki)
-
 # Debian for friends you forced linux upon.
 
 <div class="hero-copy" markdown>
