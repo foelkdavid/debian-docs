@@ -1,0 +1,74 @@
+:root {
+  --md-primary-fg-color: #a51d2d;
+  --md-primary-fg-color--light: #d45a68;
+  --md-primary-fg-color--dark: #76121f;
+  --md-accent-fg-color: #d04a5a;
+}
+
+[data-md-color-scheme="slate"] {
+  --md-hue: 225;
+  --md-default-bg-color: #10131a;
+  --md-default-bg-color--light: #171b24;
+  --md-primary-fg-color: #e65263;
+  --md-accent-fg-color: #ff7c89;
+}
+
+.md-header {
+  backdrop-filter: blur(14px);
+  background: color-mix(in srgb, var(--md-default-bg-color) 82%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--md-default-fg-color) 12%, transparent);
+  color: var(--md-default-fg-color);
+}
+
+.md-tabs {
+  background: var(--md-default-bg-color);
+  color: var(--md-default-fg-color--light);
+}
+
+.md-main__inner {
+  margin-top: 1.8rem;
+}
+
+.md-content h1 {
+  font-weight: 750;
+  letter-spacing: -0.035em;
+}
+
+.hero-copy {
+  max-width: 760px;
+  margin: -0.5rem 0 3rem;
+  font-size: 1.12rem;
+  color: var(--md-default-fg-color--light);
+}
+
+.hero-copy .md-button {
+  margin: 1rem 0.5rem 0 0;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0 2.5rem;
+}
+
+.feature-card {
+  padding: 1.25rem 1.3rem;
+  background: linear-gradient(145deg,
+    color-mix(in srgb, var(--md-primary-fg-color) 8%, var(--md-default-bg-color)),
+    var(--md-default-bg-color));
+  border: 1px solid color-mix(in srgb, var(--md-primary-fg-color) 22%, transparent);
+  border-radius: 0.8rem;
+  box-shadow: 0 10px 35px color-mix(in srgb, var(--md-default-fg-color) 6%, transparent);
+}
+
+.feature-card h3 {
+  margin-top: 0;
+  font-weight: 700;
+}
+
+@media screen and (max-width: 800px) {
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+}
