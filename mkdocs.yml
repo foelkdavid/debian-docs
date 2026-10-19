@@ -68,6 +68,9 @@ plugins:
 extra_css:
   - assets/extra.css
 
+extra_javascript:
+  - assets/github-issues.js
+
 extra:
   generator: false
   social:
