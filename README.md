@@ -15,8 +15,7 @@ Open <http://localhost:8000>. Changes are rebuilt automatically while the previe
 After pulling the latest commit into `/srv/k3s/volumes/debian-docs/repository`, rebuild the running site:
 
 ```sh
-kubectl -n debian-docs rollout restart deployment/debian-docs
-kubectl -n debian-docs rollout status deployment/debian-docs
+./publish.sh
 ```
 
 The deployment builds the static site with MkDocs Material and serves it with nginx. No content is stored in a database or Kubernetes ConfigMap.
